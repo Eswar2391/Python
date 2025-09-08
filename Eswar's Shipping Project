@@ -1,0 +1,54 @@
+# Eswar's Shipping Company
+
+weight = float(input('Enter the weight of your package: '))
+if weight <= 0:
+  print("Weight must be greater than zero.")
+  exit()
+
+# Ground Shipping
+
+if weight <= 2:
+  cost_ground = weight * 1.50 + 20
+elif weight <= 6:
+  cost_ground = weight * 3.00 + 20
+elif weight <= 10:
+  cost_ground = weight * 4.00 + 20
+else:
+  cost_ground = weight * 4.75 + 20
+
+# Ground shipping premium
+
+cost_premium_ground = 125.00
+
+# Drone shipping
+
+if weight <= 2:
+  cost_drone = weight * 4.50
+elif weight <= 6:
+  cost_drone = weight * 9.00
+elif weight <= 10:
+  cost_drone = weight * 12.00
+else:
+  cost_drone = weight * 14.25
+
+# cheapest method finding
+
+cheapest_method = ''
+if cost_ground < cost_premium_ground and  cost_ground < cost_drone:
+  cheapest_method = 'Ground Shipping'
+elif cost_premium_ground < cost_ground and  cost_premium_ground < cost_drone:
+  cheapest_method = 'Premium Ground Shipping'
+elif cost_drone < cost_ground and cost_drone < cost_premium_ground :
+  cheapest_method = 'Drone Shipping'
+
+print("""There are 3 types of shipping methods available:
+  1. Ground Shipping
+  2. Premium Ground Shipping
+  3. Drone Shipping
+""")
+if cheapest_method == 'Ground Shipping':
+  print(f"The cheapest method to ship {weight} pounds is {cheapest_method} and it costs ${cost_ground:.2f}")
+elif cheapest_method == 'Premium Ground Shipping':
+  print(f"The cheapest method to ship {weight} pounds is {cheapest_method} and it costs ${cost_premium_ground:.2f}")
+else:
+  print(f"The cheapest method to ship {weight} pounds is {cheapest_method} and it costs ${cost_drone:.2f}")
