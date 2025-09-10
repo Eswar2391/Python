@@ -1,0 +1,45 @@
+# --- Initial Data ---
+# A list of the different hairstyles offered.
+hairstyles = ["bouffant", "pixie", "dreadlocks", "crew", "bowl", "bob", "mohawk", "flattop"]
+
+# A list of the price for each corresponding hairstyle.
+prices = [30, 25, 40, 20, 20, 35, 50, 35]
+
+# A list of the number of times each hairstyle was purchased last week.
+last_week = [2, 3, 5, 8, 4, 4, 6, 2]
+
+# --- Price Analysis ---
+# Initialize a variable to hold the sum of all prices.
+total_price = 0
+
+# Loop through the prices list to sum up all the haircut prices.
+for price in prices:
+  total_price += price
+
+# Calculate the average price by dividing the total price by the number of hairstyles.
+average_price = total_price / len(prices)
+print(f"Average Haircut Price: {average_price}")
+
+# Use a list comprehension to create a new list with each price reduced by $5.
+new_prices = [price - 5 for price in prices]
+print(f"Updated prices: {new_prices}")
+
+# --- Revenue Calculation ---
+# Initialize a variable to hold the total weekly revenue.
+total_revenue = 0
+
+# Loop through the hairstyles by index to calculate revenue for each cut.
+# Revenue for one hairstyle = price * number of sales last week.
+for i in range(len(hairstyles)):
+  total_revenue += prices[i] * last_week[i]
+print(f"Total Weekly Revenue: {total_revenue}")
+
+# Calculate the average daily revenue by dividing the total by 7.
+average_daily_revenue = total_revenue / 7
+print(f"Average Daily Revenue: {average_daily_revenue}")
+
+# --- Finding Cuts Under $30 ---
+# Use a list comprehension to create a list of hairstyles that are $30 or less
+# based on the new, discounted prices.
+cuts_under_30 = [hairstyles[i] for i in range(len(new_prices)) if new_prices[i] <= 30]
+print(f"Cuts under $30 are: {cuts_under_30}")
